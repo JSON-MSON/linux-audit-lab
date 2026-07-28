@@ -1,0 +1,54 @@
+=== Failed SSH login attempts (last 50) ===
+2026-07-24T20:12:22.747285+00:00 ubuntu-target sshd-session[20193]: Failed password for codemane1 from 192.168.81.128 port 45900 ssh2
+2026-07-24T20:12:22.780760+00:00 ubuntu-target sshd-session[20196]: Failed password for codemane1 from 192.168.81.128 port 45918 ssh2
+2026-07-24T20:12:23.079308+00:00 ubuntu-target sshd-session[20194]: Failed password for codemane1 from 192.168.81.128 port 45908 ssh2
+2026-07-24T20:12:25.095470+00:00 ubuntu-target sshd-session[20193]: Failed password for codemane1 from 192.168.81.128 port 45900 ssh2
+2026-07-24T20:12:25.185117+00:00 ubuntu-target sshd-session[20196]: Failed password for codemane1 from 192.168.81.128 port 45918 ssh2
+2026-07-24T20:12:25.217542+00:00 ubuntu-target sshd-session[20194]: Failed password for codemane1 from 192.168.81.128 port 45908 ssh2
+2026-07-24T20:12:25.564854+00:00 ubuntu-target sshd-session[20192]: Failed password for codemane1 from 192.168.81.128 port 45892 ssh2
+2026-07-24T20:12:27.390071+00:00 ubuntu-target sshd-session[20193]: Failed password for codemane1 from 192.168.81.128 port 45900 ssh2
+2026-07-24T20:12:27.438607+00:00 ubuntu-target sshd-session[20196]: Failed password for codemane1 from 192.168.81.128 port 45918 ssh2
+2026-07-24T20:12:27.638308+00:00 ubuntu-target sshd-session[20194]: Failed password for codemane1 from 192.168.81.128 port 45908 ssh2
+2026-07-24T20:12:29.536361+00:00 ubuntu-target sshd-session[20192]: Failed password for codemane1 from 192.168.81.128 port 45892 ssh2
+2026-07-24T20:12:29.631411+00:00 ubuntu-target sshd-session[20196]: Failed password for codemane1 from 192.168.81.128 port 45918 ssh2
+2026-07-24T20:12:29.633484+00:00 ubuntu-target sshd-session[20193]: Failed password for codemane1 from 192.168.81.128 port 45900 ssh2
+2026-07-24T20:12:30.151689+00:00 ubuntu-target sshd-session[20194]: Failed password for codemane1 from 192.168.81.128 port 45908 ssh2
+2026-07-24T20:12:31.863066+00:00 ubuntu-target sshd-session[20192]: Failed password for codemane1 from 192.168.81.128 port 45892 ssh2
+2026-07-24T20:12:31.899656+00:00 ubuntu-target sshd-session[20196]: Failed password for codemane1 from 192.168.81.128 port 45918 ssh2
+2026-07-24T20:12:32.471587+00:00 ubuntu-target sshd-session[20193]: Failed password for codemane1 from 192.168.81.128 port 45900 ssh2
+2026-07-24T20:12:33.714275+00:00 ubuntu-target sshd-session[20194]: Failed password for codemane1 from 192.168.81.128 port 45908 ssh2
+2026-07-24T20:12:34.139646+00:00 ubuntu-target sshd-session[20196]: Failed password for codemane1 from 192.168.81.128 port 45918 ssh2
+2026-07-24T20:12:34.803648+00:00 ubuntu-target sshd-session[20192]: Failed password for codemane1 from 192.168.81.128 port 45892 ssh2
+2026-07-24T20:12:35.960396+00:00 ubuntu-target sshd-session[20193]: Failed password for codemane1 from 192.168.81.128 port 45900 ssh2
+2026-07-24T20:12:35.961372+00:00 ubuntu-target sshd-session[20194]: Failed password for codemane1 from 192.168.81.128 port 45908 ssh2
+2026-07-24T20:12:36.890786+00:00 ubuntu-target sshd-session[20221]: Failed password for codemane1 from 192.168.81.128 port 41562 ssh2
+2026-07-24T20:12:38.218400+00:00 ubuntu-target sshd-session[20192]: Failed password for codemane1 from 192.168.81.128 port 45892 ssh2
+2026-07-24T20:12:38.895320+00:00 ubuntu-target sshd-session[20227]: Failed password for codemane1 from 192.168.81.128 port 41578 ssh2
+2026-07-24T20:12:39.610692+00:00 ubuntu-target sshd-session[20229]: Failed password for codemane1 from 192.168.81.128 port 41582 ssh2
+2026-07-24T20:12:40.665072+00:00 ubuntu-target sshd-session[20227]: Failed password for codemane1 from 192.168.81.128 port 41578 ssh2
+2026-07-24T20:12:40.959659+00:00 ubuntu-target sshd-session[20221]: Failed password for codemane1 from 192.168.81.128 port 41562 ssh2
+2026-07-24T20:12:41.424527+00:00 ubuntu-target sshd-session[20233]: Failed password for codemane1 from 192.168.81.128 port 58012 ssh2
+2026-07-24T20:12:43.256482+00:00 ubuntu-target sshd-session[20227]: Failed password for codemane1 from 192.168.81.128 port 41578 ssh2
+2026-07-24T20:12:43.311544+00:00 ubuntu-target sshd-session[20229]: Failed password for codemane1 from 192.168.81.128 port 41582 ssh2
+2026-07-24T20:12:43.333860+00:00 ubuntu-target sshd-session[20221]: Failed password for codemane1 from 192.168.81.128 port 41562 ssh2
+2026-07-24T20:12:45.214649+00:00 ubuntu-target sshd-session[20227]: Failed password for codemane1 from 192.168.81.128 port 41578 ssh2
+2026-07-24T20:12:45.607482+00:00 ubuntu-target sshd-session[20233]: Failed password for codemane1 from 192.168.81.128 port 58012 ssh2
+2026-07-24T20:12:45.770827+00:00 ubuntu-target sshd-session[20229]: Failed password for codemane1 from 192.168.81.128 port 41582 ssh2
+2026-07-24T20:12:46.042584+00:00 ubuntu-target sshd-session[20221]: Failed password for codemane1 from 192.168.81.128 port 41562 ssh2
+2026-07-24T20:12:47.612221+00:00 ubuntu-target sshd-session[20227]: Failed password for codemane1 from 192.168.81.128 port 41578 ssh2
+2026-07-24T20:12:47.767725+00:00 ubuntu-target sshd-session[20233]: Failed password for codemane1 from 192.168.81.128 port 58012 ssh2
+2026-07-24T20:12:47.981181+00:00 ubuntu-target sshd-session[20229]: Failed password for codemane1 from 192.168.81.128 port 41582 ssh2
+2026-07-24T20:12:49.839978+00:00 ubuntu-target sshd-session[20233]: Failed password for codemane1 from 192.168.81.128 port 58012 ssh2
+2026-07-24T20:12:49.879414+00:00 ubuntu-target sshd-session[20221]: Failed password for codemane1 from 192.168.81.128 port 41562 ssh2
+2026-07-24T20:12:50.639428+00:00 ubuntu-target sshd-session[20229]: Failed password for codemane1 from 192.168.81.128 port 41582 ssh2
+2026-07-24T20:12:50.791237+00:00 ubuntu-target sshd-session[20227]: Failed password for codemane1 from 192.168.81.128 port 41578 ssh2
+2026-07-24T20:12:52.412663+00:00 ubuntu-target sshd-session[20233]: Failed password for codemane1 from 192.168.81.128 port 58012 ssh2
+2026-07-24T20:12:53.000254+00:00 ubuntu-target sshd-session[20221]: Failed password for codemane1 from 192.168.81.128 port 41562 ssh2
+2026-07-24T20:12:54.292513+00:00 ubuntu-target sshd-session[20229]: Failed password for codemane1 from 192.168.81.128 port 41582 ssh2
+2026-07-24T20:12:54.417166+00:00 ubuntu-target sshd-session[20233]: Failed password for codemane1 from 192.168.81.128 port 58012 ssh2
+2026-07-27T18:44:34.956063+00:00 ubuntu-target sudo: codemane1 : TTY=/dev/pts/0 ; PWD=/home/codemane1 ; USER=root ; COMMAND=/usr/bin/grep -c Failed password.*from 192.168.81.128 /var/log/auth.log
+2026-07-27T18:46:40.160982+00:00 ubuntu-target sudo: codemane1 : TTY=/dev/pts/0 ; PWD=/home/codemane1 ; USER=root ; COMMAND=/usr/bin/grep -c Failed password.*from 192.168.81.128 /var/log/auth.log
+2026-07-27T18:48:27.357686+00:00 ubuntu-target sudo: codemane1 : TTY=/dev/pts/0 ; PWD=/home/codemane1 ; USER=root ; COMMAND=/usr/bin/grep Failed password.*from 192.168.81.128 /var/log/auth.log
+
+=== World-writable files under /etc ===
+/etc/test-drift-file.conf

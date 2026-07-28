@@ -74,17 +74,81 @@ The `diff` between the two audit runs is the actual evidence here — not a desc
 
 ## Files in this repo
 
-- `audit.sh` — the audit script itself
+- `audit.sh` — the original point-in-time audit script
 - `audit_before.txt` — full audit output prior to remediation
 - `audit_after.txt` — full audit output after remediation
+- `audit_v2_drift_detection.sh` — the upgraded script with automatic drift detection (see addendum below)
+- `audit_cron.log` — output from a simulated unattended cron run
+- `audit_history/` — timestamped audit snapshots the upgraded script generates on each run
 - `screenshots/` — see below
 
 ## Screenshots
 
 ![Remediation proof via diff](screenshots/remediation-diff.png)
+![Cron job registration](screenshots/crontab-registration.png)
+![Drift detection catching both an addition and a removal](screenshots/drift-detection-both-directions.png)
 
 ## What I'd do differently in production
 
 - Extend the permission check beyond `/etc` to other sensitive directories (`/var/www`, application config paths) relevant to the specific system being audited.
 - Add a check for world-writable *directories*, not just files — a writable directory can be an even more direct privilege-escalation path, since it allows creating or replacing files entirely.
-- Automate this as a scheduled cron job with output diffed against the previous run automatically, rather than a manually-triggered one-off script — turning point-in-time auditing into continuous drift detection.
+
+---
+
+## Addendum: Continuous Drift Detection via Cron
+
+### What this adds
+
+The original script proved a point-in-time audit and a one-time remediation. This upgrade turns it into **ongoing** monitoring — every run is saved as a timestamped snapshot and automatically diffed against the previous run, so new findings are flagged as *changes since last check*, not just items in a flat list. Scheduled via `cron` to run unattended.
+
+### The upgraded script
+
+```bash
+#!/bin/bash
+# audit_v2_drift_detection.sh — with drift detection
+
+TIMESTAMP=$(date +%Y%m%d-%H%M%S)
+OUTDIR=~/audit_history
+mkdir -p "$OUTDIR"
+
+{
+  echo "=== Failed SSH login attempts (last 50) ==="
+  grep "Failed password" /var/log/auth.log | tail -50
+  echo ""
+  echo "=== World-writable files under /etc ==="
+  find /etc -type f -perm -o+w 2>/dev/null
+} > "$OUTDIR/audit_$TIMESTAMP.txt"
+
+LATEST_PREV=$(ls -t "$OUTDIR"/audit_*.txt | sed -n '2p')
+
+if [ -n "$LATEST_PREV" ]; then
+  echo "=== Changes since last audit ($LATEST_PREV) ==="
+  diff "$LATEST_PREV" "$OUTDIR/audit_$TIMESTAMP.txt"
+else
+  echo "No previous audit found — this is the baseline."
+fi
+```
+
+### Scheduled via cron
+
+```
+0 2 * * * /home/codemane1/audit.sh >> /home/codemane1/audit_cron.log 2>&1
+```
+Runs daily at 2:00 AM, appending output to a persistent log rather than requiring anyone to remember to run it manually.
+
+### Verified in both directions
+
+A test file was created (triggering a detected *addition*), then removed (triggering a detected *removal*), each correctly flagged on the very next run:
+```
+=== Changes since last audit (.../audit_20260728-145035.txt) ===
+53a54
+> /etc/test-drift-screenshot.conf
+=== Changes since last audit (.../audit_20260728-145729.txt) ===
+54d53
+< /etc/test-drift-screenshot.conf
+```
+The unattended path was also verified directly — running the script with the exact redirect syntax cron uses (`>> audit_cron.log 2>&1`) produced identical, correctly-formatted output in the log file, confirming the scheduled job will behave the same way at 2 AM with no one watching as it does when run manually.
+
+### Key finding
+
+The distinction between "a script that audits" and "a system that monitors" comes down to exactly this: does a new finding get compared against a known-good prior state, or does it just get reported fresh every time with no memory of what came before? Point-in-time auditing tells you what's wrong right now; drift detection tells you *when* it became wrong — a meaningfully more useful signal for actually catching an intrusion or misconfiguration close to when it happened, rather than discovering it in some later, unrelated audit.
