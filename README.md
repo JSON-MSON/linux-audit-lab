@@ -132,7 +132,7 @@ fi
 ### Scheduled via cron
 
 ```
-0 2 * * * /home/codemane1/audit.sh >> /home/codemane1/audit_cron.log 2>&1
+0 2 * * * /home/codemane1/audit_v2_drift_detection.sh >> /home/codemane1/audit_cron.log 2>&1
 ```
 Runs daily at 2:00 AM, appending output to a persistent log rather than requiring anyone to remember to run it manually.
 
