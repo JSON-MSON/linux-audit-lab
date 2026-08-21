@@ -68,6 +68,8 @@ Result:
 
 A single-line diff, isolating the fix precisely: the file present in the pre-remediation audit, genuinely absent afterward — direct, verifiable proof the remediation worked, not just an assertion that it should have.
 
+![Remediation proof via diff](screenshots/remediation-diff.png)
+
 ## Key finding
 
 The `diff` between the two audit runs is the actual evidence here — not a description of what should have happened, but a machine-verifiable comparison showing exactly one thing changed between "before" and "after," and that it was the correct thing. This is the difference between a detection and a demonstrated fix.
@@ -80,13 +82,7 @@ The `diff` between the two audit runs is the actual evidence here — not a desc
 - `audit_v2_drift_detection.sh` — the upgraded script with automatic drift detection (see addendum below)
 - `audit_cron.log` — output from a simulated unattended cron run
 - `audit_history/` — timestamped audit snapshots the upgraded script generates on each run
-- `screenshots/` — see below
-
-## Screenshots
-
-![Remediation proof via diff](screenshots/remediation-diff.png)
-![Cron job registration](screenshots/crontab-registration.png)
-![Drift detection catching both an addition and a removal](screenshots/drift-detection-both-directions.png)
+- `screenshots/` — terminal output captures, placed inline throughout this README next to the step each one documents, rather than grouped separately
 
 ## What I'd do differently in production
 
@@ -136,6 +132,8 @@ fi
 ```
 Runs daily at 2:00 AM, appending output to a persistent log rather than requiring anyone to remember to run it manually.
 
+![Cron job registration](screenshots/crontab-registration.png)
+
 ### Verified in both directions
 
 A test file was created (triggering a detected *addition*), then removed (triggering a detected *removal*), each correctly flagged on the very next run:
@@ -148,6 +146,8 @@ A test file was created (triggering a detected *addition*), then removed (trigge
 < /etc/test-drift-screenshot.conf
 ```
 The unattended path was also verified directly — running the script with the exact redirect syntax cron uses (`>> audit_cron.log 2>&1`) produced identical, correctly-formatted output in the log file, confirming the scheduled job will behave the same way at 2 AM with no one watching as it does when run manually.
+
+![Drift detection catching both an addition and a removal](screenshots/drift-detection-both-directions.png)
 
 ### Key finding
 
