@@ -101,7 +101,7 @@ The original script proved a point-in-time audit and a one-time remediation. Thi
 
 ```bash
 #!/bin/bash
-# audit_v2_drift_detection.sh — with drift detection
+# audit.sh — with drift detection
 
 TIMESTAMP=$(date +%Y%m%d-%H%M%S)
 OUTDIR=~/audit_history
@@ -128,9 +128,11 @@ fi
 ### Scheduled via cron
 
 ```
-0 2 * * * /home/codemane1/audit_v2_drift_detection.sh >> /home/codemane1/audit_cron.log 2>&1
+0 2 * * * /home/codemane1/audit.sh >> /home/codemane1/audit_cron.log 2>&1
 ```
 Runs daily at 2:00 AM, appending output to a persistent log rather than requiring anyone to remember to run it manually.
+
+On the host this script lives at `~/audit.sh`, which is what the crontab entry and the screenshot below both show. It is committed to this repo as `audit_v2_drift_detection.sh` to distinguish it from the basic version above; the contents are otherwise unchanged.
 
 ![Cron job registration](screenshots/crontab-registration.png)
 
