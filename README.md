@@ -9,6 +9,14 @@ Systems auditing from first principles — a self-written script that inspects a
 - **Target:** Ubuntu Server VM (same host used across this lab's other projects)
 - **Audited sources:** `/var/log/auth.log` (authentication history), `/etc` (system configuration files)
 
+## Key findings
+
+Two things this project established, each backed by evidence in the sections below.
+
+**A diff between two runs is the evidence; a description of the fix is not.** Re-running the audit after remediation and comparing the output produced a machine-verifiable result showing exactly one thing changed, and that it was the correct thing. That is the difference between detecting a misconfiguration and demonstrating it was fixed.
+
+**Auditing tells you what is wrong now; drift detection tells you when it became wrong.** The distinction comes down to whether a new finding is compared against a known-good prior state or reported fresh each time with no memory of what came before. The second is the more useful signal for catching an intrusion or misconfiguration close to when it happened rather than in some later, unrelated audit. Detection was confirmed in both directions — an added file and a removed one — because catching additions does not demonstrate catching removals.
+
 ## Process
 
 ### 1. Establish a real, detectable misconfiguration
@@ -69,10 +77,6 @@ Result:
 A single-line diff, isolating the fix precisely: the file present in the pre-remediation audit, genuinely absent afterward — direct, verifiable proof the remediation worked, not just an assertion that it should have.
 
 ![Remediation proof via diff](screenshots/remediation-diff.png)
-
-## Key finding
-
-The `diff` between the two audit runs is the actual evidence here — not a description of what should have happened, but a machine-verifiable comparison showing exactly one thing changed between "before" and "after," and that it was the correct thing. This is the difference between a detection and a demonstrated fix.
 
 ## Files in this repo
 
@@ -151,6 +155,3 @@ The unattended path was also verified directly — running the script with the e
 
 ![Drift detection catching both an addition and a removal](screenshots/drift-detection-both-directions.png)
 
-### Key finding
-
-The distinction between "a script that audits" and "a system that monitors" comes down to exactly this: does a new finding get compared against a known-good prior state, or does it just get reported fresh every time with no memory of what came before? Point-in-time auditing tells you what's wrong right now; drift detection tells you *when* it became wrong — a meaningfully more useful signal for actually catching an intrusion or misconfiguration close to when it happened, rather than discovering it in some later, unrelated audit.
